@@ -30,8 +30,8 @@ jobs:
       with:
         name: tf-outputs
         repository: marinaimeninnik/eco-bites-back
-        # github-token: ${{ secrets.GH_PAT }}
-        run-id: 9356433723
+        github-token: ${{ secrets.GH_PAT }}
+        # run-id: 9356433723
 
     - name: Load instance ID from file
       run: cat tf-outputs.env >> $GITHUB_ENV
