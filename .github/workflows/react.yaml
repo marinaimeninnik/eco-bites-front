@@ -31,7 +31,7 @@ jobs:
         name: tf-outputs
         repository: actions/toolkit
         github-token: ${{ secrets.GH_PAT }}
-        # run-id: 9356433723
+        run-id: 9356433723
 
     - name: Load instance ID from file
       run: cat tf-outputs.env >> $GITHUB_ENV
