@@ -29,6 +29,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: tf-outputs
+        repository: eco-bites-back
 
     - name: Load instance ID from file
       run: cat tf-outputs.env >> $GITHUB_ENV
