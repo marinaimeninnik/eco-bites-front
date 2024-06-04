@@ -29,10 +29,8 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: tf-outputs
-        repository: actions/toolkit
-        github-token: ${{ secrets.GH_PAT }}
-        run-id: 9356433723
-
+        repository: marinaimeninnik/eco-bites-back
+       
     - name: Load instance ID from file
       run: cat tf-outputs.env >> $GITHUB_ENV
 
