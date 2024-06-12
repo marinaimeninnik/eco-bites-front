@@ -18,6 +18,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        repository: marinaimeninnik/eco-bites-front     # Change in case of code moving
+        ref: CI-CD_pipeline
 
     # - name: Configure AWS credentials
     #   uses: aws-actions/configure-aws-credentials@v4
