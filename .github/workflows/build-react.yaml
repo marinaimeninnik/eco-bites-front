@@ -41,7 +41,18 @@ jobs:
     # - name: Check variables
     #   run: echo 'bucket_name is ${{ env.FRONTEND_S3_NAME }}'
 
-    - name: Build frontend
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Vite
+      run: npm install -g create-vite
+
+    - name: Build
       run: npm run build
 
     # - name: Upload build artifact
