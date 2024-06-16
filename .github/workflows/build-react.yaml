@@ -22,24 +22,26 @@ jobs:
         repository: marinaimeninnik/eco-bites-front     # Change in case of code moving
         ref: CI-CD_pipeline
 
-    # - name: Configure AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v4
-    #   with:
-    #     role-to-assume: ${{ vars.ROLE_ARN }}
-    #     role-session-name: github-actions-labsadm
-    #     aws-region: ${{ vars.AWS_REGION }}
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ vars.ROLE_ARN }}
+        role-session-name: github-actions-labsadm
+        aws-region: ${{ vars.AWS_REGION }}
 
-    # - name: Download artifact
-    #   uses: actions/download-artifact@v4
-    #   with:
-    #     name: tf-outputs
-    #     repository: marinaimeninnik/eco-bites-back
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: tf-outputs
+        repository: marinaimeninnik/eco-bites-back
        
-    # - name: Load instance ID from file
-    #   run: cat tf-outputs.env >> $GITHUB_ENV
+    - name: Load instance ID from file
+      run: cat tf-outputs.env >> $GITHUB_ENV
 
-    # - name: Check variables
-    #   run: echo 'bucket_name is ${{ env.FRONTEND_S3_NAME }}'
+    - name: Check variables
+      run: |
+       echo 'bucket_name is ${{ env.FRONTEND_S3_NAME }}'
+       echo 'api_url is: ${{env.api_gateway_invoke_url}}'
 
     - name: Setup Node.js
       uses: actions/setup-node@v4.0.2
@@ -53,7 +55,7 @@ jobs:
       run: npm install
 
     - name: Build project
-      run: npm run build:dev
+      run: npm run build:staging
 
     # - name: Upload build artifact
     #   uses: actions/upload-artifact@v2
